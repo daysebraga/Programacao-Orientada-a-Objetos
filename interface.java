@@ -20,7 +20,6 @@
          case 2:
              System.out.println("informe a indentificacao do jogador");
              Scanner identificacao = new Scanner(System.in);
-        
              removerJogador(identificacao);
          case 3:
              iniciarTorneio();
