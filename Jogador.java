@@ -2,15 +2,35 @@ public class Jogador{
     private int id;
     private Boolean tipo;
     private double aposta;
-    private JogoDados jogoD;
+    private JogoDado jogoD = new JogoDado;
     private double saldo = 100;
     
     public void jogarDados(){
         
     }
+
+    public double apostar(){
+        if(tipo == ){ //maquina
+            int auxiliar = (this.saldo/5);
+            this.saldo -= auxiliar;
+            return auxiliar;
+        }   
+    }
     
-    public apostar(){
-        
+    public double apostar(int qntDaAposta){
+        if(tipo == ){ //humano
+            if((saldo > 0) && (qntDaAposta < saldo)){
+                this.saldo -= qntDaAposta;
+                return qntDaAposta;
+            }
+        }
+        else if(tipo == ){ //maquina
+            if(saldo > 0){
+                qntDaAposta = (saldo/5);
+                this.saldo -= qntDaAposta;
+                return qntDaAposta;
+            }
+        }
     }
     
     public void mostrarLancamentosJogo(){
