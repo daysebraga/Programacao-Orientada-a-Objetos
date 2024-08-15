@@ -1,12 +1,12 @@
 public class Jogador{
-    private int id;
+    private string id;
     private Boolean tipo;
     private double aposta;
     private JogoDado jogoD = new JogoDado;
     private double saldo = 100;
     
     public void jogarDados(){
-        
+        jogoD.rolarDados();
     }
 
     public double apostar(){
@@ -34,7 +34,7 @@ public class Jogador{
     }
     
     public void mostrarLancamentosJogo(){
-        
+        jogoD.toString();
     }
     
     public double getSaldo(){
