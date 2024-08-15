@@ -14,8 +14,12 @@ public class Torneio{
     }
     
     public void incluirJogador(){
-        Jogador();
-        qntDeJogadores++;
+        if(qntDeJogadores < 10){  
+            Jogador();
+            qntDeJogadores++;
+        }
+        else
+            System.out.println("capacidade de jogadores excedida");
     }
     
     public void removerJogador( string iden){
@@ -28,7 +32,6 @@ public class Torneio{
     }
     
     public void iniciarTorneio(){
-
         if(qntDeJogadores >= 2){
             do{
                 System.out.println("(1) jogo de azar ou (2) jogo do porquinho: ");
@@ -42,6 +45,7 @@ public class Torneio{
                     else if(jogo_escolhido == 2){
                         //jogo do porquinho//
                     }
+                    qntDeRodadas++;
                 }while(ganhador != true); //fazer o return true para quando for encontrado ganhador(es), criterio de parada//
         }else
             System.out.println("quantidade de jogadores insuficiente");     
