@@ -22,6 +22,11 @@ public class Torneio{
     }
     
     public void iniciarTorneio(){
+
+        if(jogador > 2)
+
+        else
+            System.out.println("quantidade de jogadores insuficiente");
         
     }
     
