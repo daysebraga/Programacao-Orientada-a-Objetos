@@ -45,4 +45,10 @@ public class Jogador{
     public String toString(){
         return "Id: " + this.id + ", saldo: " + this.saldo;
     }
+
+    public void remover_tudo(){
+        this.id = null;
+        this.saldo = 0;
+    }
+    
 }
