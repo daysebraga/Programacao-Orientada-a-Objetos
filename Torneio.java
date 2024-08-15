@@ -14,11 +14,12 @@ public class Torneio{
     }
     
     public void incluirJogador(){
-        
+        Jogador();
+        qntDeJogadores++;
     }
     
     public void removerJogador(){
-        
+    
     }
     
     public void iniciarTorneio(){
