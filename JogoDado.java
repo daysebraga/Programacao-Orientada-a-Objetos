@@ -1,4 +1,4 @@
-public class JogoDados{
+public class JogoDados{    //classe para jogar os dados//
     private Dado[] dados;
     private final int qntDados = 2;
     
