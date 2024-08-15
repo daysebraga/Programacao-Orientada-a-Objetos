@@ -16,15 +16,13 @@
       switch(opcao){
 
          case 1:
-            incluirJogador();
+             incluirJogador();
          case 2:
              removerJogador();
-              
          case 3:
-              iniciarTorneio();
-        
+             iniciarTorneio();
          case 4:
-
+             mostrarPlacarFinal()
          case 5:
 
          case 6:
