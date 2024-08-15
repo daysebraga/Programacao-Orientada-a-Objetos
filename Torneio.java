@@ -37,12 +37,12 @@ public class Torneio{
             
                 do{
                     if(jogo_escolhido == 1){
-                        
+                        //jogo de azar//
                     }
                     else if(jogo_escolhido == 2){
-                        
+                        //jogo do porquinho//
                     }
-                }while(!ganhador==true); //fazer o return de 1 para quando for encontrado ganhador(es), criterio de parada//
+                }while(ganhador != true); //fazer o return true para quando for encontrado ganhador(es), criterio de parada//
         }else
             System.out.println("quantidade de jogadores insuficiente");     
     }
