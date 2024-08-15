@@ -28,6 +28,7 @@
          case 6:
 
          case 7:
+              Runtime.getRuntime().exec("cls"); 
               break;
            
      }
