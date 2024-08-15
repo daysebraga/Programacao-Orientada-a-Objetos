@@ -21,10 +21,7 @@
              removerJogador();
               
          case 3:
-              if(jogardor > 2)
-
-               else
-                  System.out.print("quantidade jogadores insuficientes");
+              iniciarTorneio();
         
          case 4:
 
