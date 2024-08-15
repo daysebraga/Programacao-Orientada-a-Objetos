@@ -16,7 +16,7 @@
       switch(opcao){
 
          case 1:
-            jogador();
+            incluirJogador();
          case 2:
               System.out.println("insira a indentificacao do jogagor");
 
