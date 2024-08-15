@@ -18,17 +18,18 @@ public class Torneio{
         qntDeJogadores++;
     }
     
-    public void removerJogador(){
+    public void removerJogador( string id){
     
     }
     
     public void iniciarTorneio(){
 
-        if(jogador > 2)
-
-        else
-            System.out.println("quantidade de jogadores insuficiente");
-        
+        if(jogador > 2){
+                do{
+                    
+                }while(!ganhador==1); //fazer o return de 1 para quando for encontrado ganhador(es), criterio de parada//
+        }else
+            System.out.println("quantidade de jogadores insuficiente");     
     }
     
     public void mostrarPlacarFinal(){
