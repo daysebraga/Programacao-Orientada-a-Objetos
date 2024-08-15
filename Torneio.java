@@ -24,7 +24,7 @@ public class Torneio{
     
     public void iniciarTorneio(){
 
-        if(jogador > 2){
+        if(qntDeJogadores >= 2){
                 do{
                     
                 }while(!ganhador==1); //fazer o return de 1 para quando for encontrado ganhador(es), criterio de parada//
