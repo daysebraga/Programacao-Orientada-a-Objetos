@@ -18,9 +18,7 @@
          case 1:
             incluirJogador();
          case 2:
-              System.out.println("insira a indentificacao do jogagor");
-
-              Scanner identificacao = new Scanner(System.in);
+             removerJogador();
               
          case 3:
               if(jogardor > 2)
