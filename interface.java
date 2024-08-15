@@ -3,7 +3,7 @@
  public class interface{
  import java.util.Scanner;
 
-     System.out.println("(1)incluir_jogador\n"+
+     System.out.print("(1)incluir_jogador\n"+
                        "(2)remover_jogador\n"+
                        "(3)inicializar_torneio\n"+
                        "(4)placar_do_torneio\n"+
@@ -27,9 +27,9 @@
          case 4:
              mostrarPlacarFinal()
          case 5:
-
+             gravarTorneioArquivo();
          case 6:
-
+             lerTorneioArquivo();
          case 7:
               Runtime.getRuntime().exec("cls"); 
               break;
