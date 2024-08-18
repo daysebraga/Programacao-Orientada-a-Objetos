@@ -57,7 +57,7 @@ public class JogoDados{    //classe para jogar os dados//
                     System.out.println("Jogador ganhou.");
                     jogador.setGanhador(true);
                     return true;
-                }else if(novaSoma == 7){
+                }else if(novaSoma == 2 || novaSoma == 3 || novaSoma == 12){
                     System.out.println("Lancamento " + i + ": /n" + resultado[0] + " e " + resultado[1] + " = " + soma);
                     System.out.println("Jogador perdeu.");
                     jogador.setGanhador(false);
