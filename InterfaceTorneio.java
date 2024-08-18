@@ -1,7 +1,11 @@
+import java.util.Scanner;
 //interface apresentada ao usuario, simulador do torneio//
 
+public class InterfaceTorneio{
+ 
+}
+
  public class interface{
- import java.util.Scanner;
 
      System.out.print("(1)incluir_jogador\n"+
                        "(2)remover_jogador\n"+
