@@ -16,6 +16,7 @@ public class JogoDados{    //classe para jogar os dados//
 
     public int[] getResultado(){
         int[] resultado = new int[qntDados];
+        rolarDados();
         for(int i = 0; i < qntDados; i++)
             resultado[i] = dados[i].getSideUp();
         
@@ -47,7 +48,6 @@ public class JogoDados{    //classe para jogar os dados//
             int numeroBuscado = soma;
             
             while(true){
-                rolarDados();
                 resultado = getResultado();
                 int novaSoma = resultado[0] + resultado[1];
                 i++;
