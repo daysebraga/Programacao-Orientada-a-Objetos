@@ -29,7 +29,13 @@ public class Torneio{
             System.out.print("Informe o id do jogador: ");
             String id = scanner.nextLine();
             System.out.println();
-    
+
+            for(int i = 0; i < qntDeJogadores; i++)
+                if(jogadores[i].getId().equals(id)){
+                    System.out.println("Jogador já existe.");
+                    return;
+                }
+            
             do{
                 System.out.print("Informe o tipo do jogador: ([1]Humano, [0]Maquina) ");
                 int tipo = scanner.nextint();
@@ -51,20 +57,33 @@ public class Torneio{
             System.out.println("Quantidade de jogadores excedida.");
     }
 
+    private static void removerJogador(){
+        if(qntDeJogadores > 0){
+            System.out.print("Informe o id do jogador: ");
+            String id = scanner.nextLine();
+            boolean jogadorRemovido = false;
+    
+            for(int i = 0; i < qntDeJogadores; i++){ 
+                if(jogadores[i].getId().equals(id)){ //procura o jogador
+                    for(int j = i; j < qntDeJogadores - 1; j++) //joga o id do jogador selecionado para o ultimo indice
+                        jogadores[j] = jogadores[j + 1];
+                    
+                    jogadores[qntDeJogadores - 1] = null; //limpar o ultimo jogador, no caso, o q foi informado
+                    qntDeJogadores--;
+                    jogadorRemovido = true;
+                    break;
+                }
+            }
+        }else
+            System.out.println("Nenhum jogador para remover.");
+    }
+
+    
     public void apostaDaRodada(){
         for(int i = 0; i < qntDeJogadores; i++){
             Scanner valorAposta = new Scanner(System.in);
             mesa += jogadores[i].apostar(valorAposta); 
         }
-    }
-    
-    public void removerJogador(string iden){
-            for(int i=0; i<qntDeJogadores; i++){
-                    if(jogadores[i].id.equals(iden)){
-                            jogadores[i].remover_tudo();
-                            qntDeJogadores--;
-                    }
-            }
     }
     
     public void iniciarTorneio(){
