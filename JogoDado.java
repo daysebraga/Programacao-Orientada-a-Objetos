@@ -97,27 +97,3 @@ public class JogoDados{    //classe para jogar os dados//
             jogarJogoPorquinho();
     }
 }
-
-/*public class jogo_do_porquinho(jogador jogador){
-    int qtd_lancamentos = 0;
-    int resultante[2];
-    int pontuacao;
-    int[] jogador = new int[pontuacao];
-
-    resultante = getResultado();
-
-    for(int i=0; i < qntDeJogadores; i++){
-
-        do{
-                if(resultante[i] != resultante[i + 1])
-                    jogador[i].pontuacao = (resultante[i] * resultante[i + 1]);
-                else 
-                    jogador[i].pontuacao = ((resultante[i] * resultante[i + 1]) * 2); 
-            
-            qtd_lancamentos++;
-            
-        }while(!jogador[i].pontuacao >= 300);
-
-        //fazer comparacao de quem fez a menor qtd_lancamentos//
-    }*/
-    
