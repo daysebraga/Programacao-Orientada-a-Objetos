@@ -66,15 +66,39 @@ public class JogoDados{    //classe para jogar os dados//
             }
         }
     }
+
+    public int jogarJogoPorquinho(){
+        int pontuacao = 0;
+        int lancamentos = 0;
+        
+        while(pontuacao < 300){
+            int[] resultado = getResultado();
+            int produto = resultado[0] * resultado[1];
+            
+            if(resultado[0] == resultado[1]){
+                if(resultado[0] == 1) //qnd os valores sao iguais a 1 o produto vale 30
+                    produto = 30;
+                else //dobrar o valor do produto para outros dobles
+                    produto *= 2; 
+            }
+            
+            pontuacao += produto;
+            lancamentos++;
+        }
+
+        System.out.println("Pontuacao: " + pontuacao + "/nLancamentos: " + lancamentos);
+        return pontuacao;
+    }
     
     public aplicarRegradoJogo(int qualJogo, Jogador jogador){
         if(qualJogo == 1)
             jogarJogoAzar(jogador);
         else if(qualJogo == 2)
-            //porquinho
+            jogarJogoPorquinho();
     }
 }
-public class jogo_do_porquinho(jogador jogador){
+
+/*public class jogo_do_porquinho(jogador jogador){
     int qtd_lancamentos = 0;
     int resultante[2];
     int pontuacao;
@@ -95,5 +119,5 @@ public class jogo_do_porquinho(jogador jogador){
         }while(!jogador[i].pontuacao >= 300);
 
         //fazer comparacao de quem fez a menor qtd_lancamentos//
-    }
+    }*/
     
