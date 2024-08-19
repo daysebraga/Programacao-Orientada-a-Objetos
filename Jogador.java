@@ -23,6 +23,7 @@ public class Jogador{
             this.aposta = auxiliar;
             return auxiliar;
         }   
+        return 0;
     }
     
     public double apostar(double qntDaAposta){
@@ -41,6 +42,7 @@ public class Jogador{
                 return qntDaAposta;
             }
         }
+        return 0;
     }
     
     public int[] mostrarLancamentosJogo(){
