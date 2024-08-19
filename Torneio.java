@@ -24,8 +24,8 @@ public class Torneio{
                        "Escolha uma opcao: ");
     }
     
-    private static void incluirJogador(){
-        if(qntDeJogadores <= 10){
+    private void incluirJogador(){
+        if(qntDeJogadores < 10){
             System.out.print("Informe o id do jogador: ");
             String id = scanner.nextLine();
             System.out.println();
@@ -57,7 +57,7 @@ public class Torneio{
             System.out.println("Quantidade de jogadores excedida.");
     }
 
-    private static void removerJogador(){
+    private void removerJogador(){
         if(qntDeJogadores > 0){
             System.out.print("Informe o id do jogador: ");
             String id = scanner.nextLine();
@@ -78,39 +78,90 @@ public class Torneio{
             System.out.println("Nenhum jogador para remover.");
     }
 
-    
     public void apostaDaRodada(){
+        Scanner valorAposta = new Scanner(System.in);
+    
         for(int i = 0; i < qntDeJogadores; i++){
-            Scanner valorAposta = new Scanner(System.in);
-            mesa += jogadores[i].apostar(valorAposta); 
+            if(jogadores[i].getSaldo() > 1){
+                if(jogadores[i].isHumano()){
+                    System.out.print("Jogador " + jogadores[i].getId() + ", insira o valor da aposta: ");
+                    int aposta = valorAposta.nextInt();
+                    mesa += jogadores[i].apostar(aposta);
+                }else
+                    mesa += jogadores[i].apostar();
+            }
         }
     }
     
+    public void setQntDeRodadas(int qntDeRodadas){
+        this.qntDeRodadas = qntDeRodadas;
+    }
+
     public void iniciarTorneio(){
-        if(qntDeJogadores >= 2){
-            do{
-                System.out.println("(1) jogo de azar ou (2) jogo do porquinho: ");
-                Scanner jogo_escolhido = new Scanner(System.in);
-            }while(jogo_escolhido != 1 || jogo_escolhido !=2);
-            
+            if(qntDeJogadores >= 2){
+                Scanner scanner = new Scanner(System.in);
+                int jogoEscolhido = 0;
+
                 do{
-                    if(jogo_escolhido == 1){
-                        //jogo de azar//
+                    System.out.println("Escolha o tipo de jogo: (1) Jogo de Azar ou (2) Jogo do Porquinho");
+                    jogoEscolhido = scanner.nextInt();
+                    
+                    if((jogoEscolhido != 1) && (jogoEscolhido != 2))
+                        System.out.println("Opcao invalida.");
+                }while((jogoEscolhido != 1) && (jogoEscolhido != 2));
+
+                System.out.print("Informe o número máximo de rodadas: ");
+                int rodada = scanner.nextInt();
+                setQntDeRodadas(rodada);
+    
+                boolean ganhadorEncontrado = false;
+    
+                do{
+                    apostaDaRodada();
+    
+                    if(jogoEscolhido == 1){
+                        int totalVencedores = 0;
+    
+                        for(int i = 0; i < qntDeJogadores; i++){
+                            Jogador jogador = jogadores[i];
+                            boolean ganhou = jogador.getJogoDados().jogarJogoAzar(jogador);
+    
+                            if(ganhou)
+                                totalVencedores++;
+                        }
+    
+                        if(totalVencedores > 0){
+                            double valorPorGanhador = mesa / totalVencedores;
+                            for(int i = 0; i < qntDeJogadores; i++){
+                                Jogador jogador = jogadores[i];
+                                if(jogador.isGanhador()){
+                                    jogador.ganhou(valorPorGanhador);
+                                    System.out.println("Jogador " + jogador.getId() + " ganhou " + valorPorGanhador);
+                                }
+                            }
+                            ganhadorEncontrado = true;
+                        }else
+                            System.out.println("Nenhum jogador venceu nesta rodada.");
+                    }else if(jogoEscolhido == 2){
+                        for(int i = 0; i < qntDeJogadores; i++){
+                            Jogador jogador = jogadores[i];
+                            int pontuacao = jogador.getJogoDados().jogarJogoPorquinho();
+                            
+                            if(pontuacao >= 300){
+                                ganhadorEncontrado = true;
+                                jogador.setGanhador(true);
+                                jogador.ganhou(mesa);
+                                System.out.println("Jogador " + jogador.getId() + " ganhou " + mesa);
+                                break;
+                            }
+                        }
                     }
-                    else if(jogo_escolhido == 2){
-                        //jogo do porquinho//
-                    }
+                    
                     qntDeRodadas++;
-                }while(ganhador != true); //fazer o return true para quando for encontrado ganhador(es), criterio de parada//
-        }else
-            System.out.println("quantidade de jogadores insuficiente");     
+                    mesa = 0;
+                }while((!ganhadorEncontrado) && (qntDeRodadas < rodada));
+                
+                if(!ganhadorEncontrado)
+                    System.out.println("Nenhum ganhador foi encontrado após " + rodada + " rodadas.");
     }
-    
-    public void mostrarPlacarFinal(){
-        
-    }
-    
-    public void mostrarFinaldaRodada(){
-        
-    }   
 }
