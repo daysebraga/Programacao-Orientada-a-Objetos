@@ -9,7 +9,7 @@ public class JogoDados{    //classe para jogar os dados//
    }
     
     
-    public rolarDados(){
+    public void rolarDados(){
         for(int i = 0; i < qntDados; i++)
             dados[i].roll();
     }
@@ -90,7 +90,7 @@ public class JogoDados{    //classe para jogar os dados//
         return pontuacao;
     }
     
-    public aplicarRegradoJogo(int qualJogo, Jogador jogador){
+    public void aplicarRegradoJogo(int qualJogo, Jogador jogador){
         if(qualJogo == 1)
             jogarJogoAzar(jogador);
         else if(qualJogo == 2)
