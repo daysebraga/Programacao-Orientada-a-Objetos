@@ -77,7 +77,7 @@ public class Torneio{
             if(jogadores[i].getSaldo() > 1){
                 if(jogadores[i].isHumano()){
                     System.out.print("Jogador " + jogadores[i].getId() + ", insira o valor da aposta: ");
-                    int aposta = scanner.nextInt();
+                    double aposta = scanner.nextInt();
                     mesa += jogadores[i].apostar(aposta);
                 }else
                     mesa += jogadores[i].apostar();
@@ -117,7 +117,7 @@ public class Torneio{
     
                     for(int i = 0; i < qntDeJogadores; i++){
                         Jogador jogador = jogadores[i];
-                        boolean ganhou = jogador.getJogoDados().jogarJogoAzar(jogador);
+                        boolean ganhou = jogador.jogoD.jogarJogoAzar(jogador);
     
                         if(ganhou)
                             totalVencedores++;
@@ -138,7 +138,7 @@ public class Torneio{
                 }else if(jogoEscolhido == 2){
                     for(int i = 0; i < qntDeJogadores; i++){
                         Jogador jogador = jogadores[i];
-                        int pontuacao = jogador.getJogoDados().jogarJogoPorquinho();
+                        int pontuacao = jogador.jogoD.jogarJogoPorquinho();
                             
                         if(pontuacao >= 300){
                             ganhadorEncontrado = true;
@@ -220,7 +220,7 @@ public class Torneio{
         }
     }
 
-    private void menuInterface(){
+    public void menuInterface(){
         System.out.print("(1)incluir_jogador\n"+
                          "(2)remover_jogador\n"+
                          "(3)inicializar_torneio\n"+
@@ -259,7 +259,7 @@ public class Torneio{
                 lerTorneioArquivo();
                 break;
             case 7:
-                Runtime.getRuntime().exec("cls"); 
+                System.out.println("Saindo."); //tirei o cls pq nao tava dando erro
                 break;
             default:
                 System.out.println("Opcao invalida.");
