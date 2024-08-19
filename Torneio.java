@@ -20,7 +20,7 @@ public class Torneio{
                        "(4) Placar do Torneio;\n"+
                        "(5) Gravar dados do Torneio em Arquivo;\n"+
                        "(6) Ler os dados do Tornei em Arquivo;\n"+
-                       "(7) Sair da Aplicacao./n" +
+                       "(7) Sair da Aplicacao.\n" +
                        "Escolha uma opcao: ");
     }
     
@@ -38,7 +38,7 @@ public class Torneio{
             
             do{
                 System.out.print("Informe o tipo do jogador: ([1]Humano, [0]Maquina) ");
-                int tipo = scanner.nextint();
+                int tipo = scanner.nextInt();
                 scanner.nextLine();
                 if((tipo != 0) && (tipo != 1))
                     System.out.println("Tipo invalido.");
@@ -163,5 +163,23 @@ public class Torneio{
                 
                 if(!ganhadorEncontrado)
                     System.out.println("Nenhum ganhador foi encontrado após " + rodada + " rodadas.");
+    }
+
+    public void placarDoTorneio(){
+        if(qntDeJogadores > 0){
+            for(int i = 0; i < qntDeJogadores - 1; i++){ //ordenar os jogadores por saldo (do maior para o menor)
+                for(int j = i + 1; j < qntDeJogadores; j++){
+                    if(jogadores[i].getSaldo() < jogadores[j].getSaldo()){
+                        Jogador temp = jogadores[i];
+                        jogadores[i] = jogadores[j];
+                        jogadores[j] = temp;
+                    }
+                }
+            }
+            
+            System.out.println("Classificação dos Jogadores:");
+            for(int i = 0; i < qntDeJogadores; i++)
+                System.out.println((i + 1) + " lugar: Jogador " + jogadores[i].getId() + " com saldo de " + jogadores[i].getSaldo());
+        }
     }
 }
