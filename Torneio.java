@@ -13,15 +13,38 @@ public class Torneio{
         qntDeRodadas = 0;
     }
     
-    private static void exibirMenu(){
-        System.out.println("(1) Incluir Jogador;\n"+
-                       "(2) Remover Jogado;\n"+
-                       "(3) Inicializar Torneio;\n"+
-                       "(4) Placar do Torneio;\n"+
-                       "(5) Gravar dados do Torneio em Arquivo;\n"+
-                       "(6) Ler os dados do Tornei em Arquivo;\n"+
-                       "(7) Sair da Aplicacao.\n" +
-                       "Escolha uma opcao: ");
+    private static void Menuinterface(){
+        System.out.print("(1)incluir_jogador\n"+
+                       "(2)remover_jogador\n"+
+                       "(3)inicializar_torneio\n"+
+                       "(4)placar_do_torneio\n"+
+                       "(5)gravar_dados_do_torneio_em_arquivo\n"+
+                       "(6)ler_os_dados_do_torneio_em_arquivo\n"+
+                       "(7)sair_da_aplicacao\n");
+
+  Scanner opcao = new Scanner(System.in);
+
+      switch(opcao){
+
+         case 1:
+             incluirJogador();
+         case 2:
+             System.out.println("informe a indentificacao do jogador");
+             Scanner identificacao = new Scanner(System.in);
+             removerJogador(identificacao);
+         case 3:
+             iniciarTorneio();
+         case 4:
+             mostrarPlacarFinal()
+         case 5:
+             gravarTorneioArquivo();
+         case 6:
+             lerTorneioArquivo();
+         case 7:
+              Runtime.getRuntime().exec("cls"); 
+              break;
+           
+         }
     }
     
     private void incluirJogador(){
