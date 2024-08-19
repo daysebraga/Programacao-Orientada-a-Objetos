@@ -13,37 +13,49 @@ public class Torneio{
         qntDeRodadas = 0;
     }
     
-    private static void Menuinterface(){
+    private void menuInterface(){
         System.out.print("(1)incluir_jogador\n"+
-                       "(2)remover_jogador\n"+
-                       "(3)inicializar_torneio\n"+
-                       "(4)placar_do_torneio\n"+
-                       "(5)gravar_dados_do_torneio_em_arquivo\n"+
-                       "(6)ler_os_dados_do_torneio_em_arquivo\n"+
-                       "(7)sair_da_aplicacao\n");
-
-  Scanner opcao = new Scanner(System.in);
-
-      switch(opcao){
-
-         case 1:
-             incluirJogador();
-         case 2:
-             System.out.println("informe a indentificacao do jogador");
-             Scanner identificacao = new Scanner(System.in);
-             removerJogador(identificacao);
-         case 3:
-             iniciarTorneio();
-         case 4:
-             mostrarPlacarFinal()
-         case 5:
-             gravarTorneioArquivo();
-         case 6:
-             lerTorneioArquivo();
-         case 7:
-              Runtime.getRuntime().exec("cls"); 
-              break;
-           
+                         "(2)remover_jogador\n"+
+                         "(3)inicializar_torneio\n"+
+                         "(4)placar_do_torneio\n"+
+                         "(5)gravar_dados_do_torneio_em_arquivo\n"+
+                         "(6)ler_os_dados_do_torneio_em_arquivo\n"+
+                         "(7)sair_da_aplicacao\n");
+        
+        int opcao;
+        do{
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+            if((opcao < 1) || (opcao > 7))
+                System.out.println("Opcao invalida. Insira um numero entre 1 e 7.");
+        while((opcao < 1) || (opcao > 7));
+        
+        switch(opcao){
+            case 1:
+                incluirJogador();
+                break;
+            case 2:
+                System.out.println("informe a indentificacao do jogador");
+                String identificacao = scanner.nextLine();
+                removerJogador(identificacao);
+                break;
+            case 3:
+                iniciarTorneio();
+                break;
+            case 4:
+                mostrarPlacarFinal();
+                break;
+            case 5:
+                gravarTorneioArquivo();
+                break;
+            case 6:
+                lerTorneioArquivo();
+                break;
+            case 7:
+                Runtime.getRuntime().exec("cls"); 
+                break;
+            default:
+                System.out.println("Opcao invalida.");
          }
     }
     
@@ -58,14 +70,15 @@ public class Torneio{
                     System.out.println("Jogador já existe.");
                     return;
                 }
-            
+
+            int tipo;
             do{
                 System.out.print("Informe o tipo do jogador: ([1]Humano, [0]Maquina) ");
-                int tipo = scanner.nextInt();
+                tipo = scanner.nextInt();
                 scanner.nextLine();
                 if((tipo != 0) && (tipo != 1))
                     System.out.println("Tipo invalido.");
-            }while((tipo != 0) && (tipo != 1))
+            }while((tipo != 0) && (tipo != 1));
     
             boolean auxiliar;
             if(tipo == 1)
@@ -80,7 +93,7 @@ public class Torneio{
             System.out.println("Quantidade de jogadores excedida.");
     }
 
-    private void removerJogador(string id){
+    private void removerJogador(String id){
         if(qntDeJogadores > 0){
             boolean jogadorRemovido = false;
     
@@ -120,7 +133,6 @@ public class Torneio{
 
     public void iniciarTorneio(){
             if(qntDeJogadores >= 2){
-                Scanner scanner = new Scanner(System.in);
                 int jogoEscolhido = 0;
 
                 do{
