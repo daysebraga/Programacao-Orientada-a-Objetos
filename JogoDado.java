@@ -32,18 +32,18 @@ public class JogoDados{    //classe para jogar os dados//
         int soma = resultado[0] + resultado[1];
 
         if(soma == 7 || soma == 11){
-            System.out.println("Lancamento 1: /n" + resultado[0] + " e " + resultado[1] + " = " + soma);
+            System.out.println("Lancamento 1: \n" + resultado[0] + " e " + resultado[1] + " = " + soma);
             System.out.println("Jogador ganhou.");
             jogador.setGanhador(true);
             return true;
         }else if(soma == 2 || soma == 3 || soma == 12){
-            System.out.println("Lancamento 1: /n" + resultado[0] + " e " + resultado[1] + " = " + soma);
+            System.out.println("Lancamento 1: \n" + resultado[0] + " e " + resultado[1] + " = " + soma);
             System.out.println("Jogador perdeu.");
             jogador.setGanhador(false);
             return false;
         }else{
             int i = 1;
-            System.out.println("Lancamento " + i + ": /n" + resultado[0] + " e " + resultado[1] + " = " + soma);
+            System.out.println("Lancamento " + i + ": \n" + resultado[0] + " e " + resultado[1] + " = " + soma);
             System.out.println("Número a ser buscado: " + soma);
             int numeroBuscado = soma;
             
@@ -53,12 +53,12 @@ public class JogoDados{    //classe para jogar os dados//
                 i++;
                 
                 if(novaSoma == numeroBuscado){
-                    System.out.println("Lancamento " + i + ": /n" + resultado[0] + " e " + resultado[1] + " = " + soma);
+                    System.out.println("Lancamento " + i + ": \n" + resultado[0] + " e " + resultado[1] + " = " + soma);
                     System.out.println("Jogador ganhou.");
                     jogador.setGanhador(true);
                     return true;
                 }else if(novaSoma == 2 || novaSoma == 3 || novaSoma == 12){
-                    System.out.println("Lancamento " + i + ": /n" + resultado[0] + " e " + resultado[1] + " = " + soma);
+                    System.out.println("Lancamento " + i + ": \n" + resultado[0] + " e " + resultado[1] + " = " + soma);
                     System.out.println("Jogador perdeu.");
                     jogador.setGanhador(false);
                     return false;
@@ -86,7 +86,7 @@ public class JogoDados{    //classe para jogar os dados//
             lancamentos++;
         }
 
-        System.out.println("Pontuacao: " + pontuacao + "/nLancamentos: " + lancamentos);
+        System.out.println("Pontuacao: " + pontuacao + "\nLancamentos: " + lancamentos);
         return pontuacao;
     }
     
