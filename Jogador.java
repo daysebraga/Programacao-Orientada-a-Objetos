@@ -16,6 +16,10 @@ public class Jogador{
         jogoD.rolarDados();
     }
 
+    public JogoDados getJogoDados(){
+        return jogoD;
+    }
+    
     public double apostar(){
         if(tipo == false){ //maquina
             double auxiliar = (this.saldo/5);
