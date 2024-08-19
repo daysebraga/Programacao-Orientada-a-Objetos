@@ -90,72 +90,72 @@ public class Torneio{
     }
 
     public void iniciarTorneio(){
-            if(qntDeJogadores >= 2){
-                int jogoEscolhido = 0;
+        if(qntDeJogadores >= 2){
+            int jogoEscolhido = 0;
 
-                do{
-                    System.out.println("Escolha o tipo de jogo: (1) Jogo de Azar ou (2) Jogo do Porquinho");
-                    jogoEscolhido = scanner.nextInt();
-                    scanner.nextLine();
-                    
-                    if((jogoEscolhido != 1) && (jogoEscolhido != 2))
-                        System.out.println("Opcao invalida.");
-                }while((jogoEscolhido != 1) && (jogoEscolhido != 2));
-
-                System.out.print("Informe o número máximo de rodadas: ");
-                int rodada = scanner.nextInt();
-                setQntDeRodadas(rodada);
+            do{
+                System.out.println("Escolha o tipo de jogo: (1) Jogo de Azar ou (2) Jogo do Porquinho");
+                jogoEscolhido = scanner.nextInt();
                 scanner.nextLine();
-    
-                boolean ganhadorEncontrado = false;
-    
-                do{
-                    apostaDaRodada();
-    
-                    if(jogoEscolhido == 1){
-                        int totalVencedores = 0;
-    
-                        for(int i = 0; i < qntDeJogadores; i++){
-                            Jogador jogador = jogadores[i];
-                            boolean ganhou = jogador.getJogoDados().jogarJogoAzar(jogador);
-    
-                            if(ganhou)
-                                totalVencedores++;
-                        }
-    
-                        if(totalVencedores > 0){
-                            double valorPorGanhador = mesa / totalVencedores;
-                            for(int i = 0; i < qntDeJogadores; i++){
-                                Jogador jogador = jogadores[i];
-                                if(jogador.isGanhador()){
-                                    jogador.ganhou(valorPorGanhador);
-                                    System.out.println("Jogador " + jogador.getId() + " ganhou " + valorPorGanhador);
-                                }
-                            }
-                            ganhadorEncontrado = true;
-                        }else
-                            System.out.println("Nenhum jogador venceu nesta rodada.");
-                    }else if(jogoEscolhido == 2){
-                        for(int i = 0; i < qntDeJogadores; i++){
-                            Jogador jogador = jogadores[i];
-                            int pontuacao = jogador.getJogoDados().jogarJogoPorquinho();
-                            
-                            if(pontuacao >= 300){
-                                ganhadorEncontrado = true;
-                                jogador.setGanhador(true);
-                                jogador.ganhou(mesa);
-                                System.out.println("Jogador " + jogador.getId() + " ganhou " + mesa);
-                                break;
-                            }
-                        }
-                    }
                     
-                    qntDeRodadas++;
-                    mesa = 0;
-                }while((!ganhadorEncontrado) && (qntDeRodadas < rodada));
+                if((jogoEscolhido != 1) && (jogoEscolhido != 2))
+                    System.out.println("Opcao invalida.");
+            }while((jogoEscolhido != 1) && (jogoEscolhido != 2));
+
+            System.out.print("Informe o número máximo de rodadas: ");
+            int rodada = scanner.nextInt();
+            setQntDeRodadas(rodada);
+            scanner.nextLine();
+    
+            boolean ganhadorEncontrado = false;
+    
+            do{
+                apostaDaRodada();
+    
+                if(jogoEscolhido == 1){
+                    int totalVencedores = 0;
+    
+                    for(int i = 0; i < qntDeJogadores; i++){
+                        Jogador jogador = jogadores[i];
+                        boolean ganhou = jogador.getJogoDados().jogarJogoAzar(jogador);
+    
+                        if(ganhou)
+                            totalVencedores++;
+                    }
+    
+                    if(totalVencedores > 0){
+                        double valorPorGanhador = mesa / totalVencedores;
+                        for(int i = 0; i < qntDeJogadores; i++){
+                            Jogador jogador = jogadores[i];
+                            if(jogador.isGanhador()){
+                                jogador.ganhou(valorPorGanhador);
+                                System.out.println("Jogador " + jogador.getId() + " ganhou " + valorPorGanhador);
+                            }
+                        }
+                        ganhadorEncontrado = true;
+                    }else
+                        System.out.println("Nenhum jogador venceu nesta rodada.");
+                }else if(jogoEscolhido == 2){
+                    for(int i = 0; i < qntDeJogadores; i++){
+                        Jogador jogador = jogadores[i];
+                        int pontuacao = jogador.getJogoDados().jogarJogoPorquinho();
+                            
+                        if(pontuacao >= 300){
+                            ganhadorEncontrado = true;
+                            jogador.setGanhador(true);
+                            jogador.ganhou(mesa);
+                            System.out.println("Jogador " + jogador.getId() + " ganhou " + mesa);
+                            break;
+                        }                        }
+                }
+                    
+                qntDeRodadas++;
+                mesa = 0;
+            }while((!ganhadorEncontrado) && (qntDeRodadas < rodada));
                 
-                if(!ganhadorEncontrado)
-                    System.out.println("Nenhum ganhador foi encontrado após " + rodada + " rodadas.");
+            if(!ganhadorEncontrado)                    
+                System.out.println("Nenhum ganhador foi encontrado após " + rodada + " rodadas.");
+        }
     }
 
     public void placarDoTorneio(){
