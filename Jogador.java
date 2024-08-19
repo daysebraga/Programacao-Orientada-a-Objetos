@@ -1,5 +1,5 @@
 public class Jogador{
-    private string id;
+    private String id;
     private boolean tipo; //true (1) para humano, false (0) para máquina
     private double aposta;
     private JogoDados jogoD = new JogoDados();
@@ -9,7 +9,7 @@ public class Jogador{
     public Jogador(String id, boolean tipo){
         this.id = id;
         this.tipo = tipo;
-        this.jogoDados = new JogoDados();
+        this.jogoD = new JogoDados();
     }
     
     public void jogarDados(){
@@ -18,14 +18,14 @@ public class Jogador{
 
     public double apostar(){
         if(tipo == false){ //maquina
-            int auxiliar = (this.saldo/5);
+            double auxiliar = (this.saldo/5);
             this.saldo -= auxiliar;
             this.aposta = auxiliar;
             return auxiliar;
         }   
     }
     
-    public double apostar(int qntDaAposta){
+    public double apostar(double qntDaAposta){
         if(tipo == true){ //humano
             if((saldo > 0) && (qntDaAposta < saldo)){
                 this.saldo -= qntDaAposta;
