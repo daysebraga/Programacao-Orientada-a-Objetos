@@ -23,7 +23,6 @@ public class Torneio{
         if(qntDeJogadores < 10){
             System.out.print("Informe o id do jogador: ");
             String id = scanner.nextLine();
-            System.out.println();
 
             for(int i = 0; i < qntDeJogadores; i++)
                 if(jogadores[i].getId().equals(id)){
@@ -221,48 +220,52 @@ public class Torneio{
     }
 
     public void menuInterface(){
-        System.out.print("(1)incluir_jogador\n"+
-                         "(2)remover_jogador\n"+
-                         "(3)inicializar_torneio\n"+
-                         "(4)placar_do_torneio\n"+
-                         "(5)gravar_dados_do_torneio_em_arquivo\n"+
-                         "(6)ler_os_dados_do_torneio_em_arquivo\n"+
-                         "(7)sair_da_aplicacao\n");
-        
-        int opcao;
+        boolean saida = false;
         do{
-            opcao = scanner.nextInt();
-            scanner.nextLine();
-            if((opcao < 1) || (opcao > 7))
-                System.out.println("Opcao invalida. Insira um numero entre 1 e 7.");
-        }while((opcao < 1) || (opcao > 7));
-        
-        switch(opcao){
-            case 1:
-                incluirJogador();
-                break;
-            case 2:
-                System.out.println("informe a indentificacao do jogador");
-                String identificacao = scanner.nextLine();
-                removerJogador(identificacao);
-                break;
-            case 3:
-                iniciarTorneio();
-                break;
-            case 4:
-                placarDoTorneio();
-                break;
-            case 5:
-                gravarTorneioArquivo();
-                break;
-            case 6:
-                lerTorneioArquivo();
-                break;
-            case 7:
-                System.out.println("Saindo."); //tirei o cls pq nao tava dando erro
-                break;
-            default:
-                System.out.println("Opcao invalida.");
-         }
+            System.out.print("(1)incluir_jogador\n"+
+                             "(2)remover_jogador\n"+
+                             "(3)inicializar_torneio\n"+
+                             "(4)placar_do_torneio\n"+
+                             "(5)gravar_dados_do_torneio_em_arquivo\n"+
+                             "(6)ler_os_dados_do_torneio_em_arquivo\n"+
+                             "(7)sair_da_aplicacao\n");
+            
+            int opcao;
+            do{
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+                if((opcao < 1) || (opcao > 7))
+                    System.out.println("Opcao invalida. Insira um numero entre 1 e 7.");
+            }while((opcao < 1) || (opcao > 7));
+            
+            switch(opcao){
+                case 1:
+                    incluirJogador();
+                    break;
+                case 2:
+                    System.out.println("informe a indentificacao do jogador");
+                    String identificacao = scanner.nextLine();
+                    removerJogador(identificacao);
+                    break;
+                case 3:
+                    iniciarTorneio();
+                    break;
+                case 4:
+                    placarDoTorneio();
+                    break;
+                case 5:
+                    gravarTorneioArquivo();
+                    break;
+                case 6:
+                    lerTorneioArquivo();
+                    break;
+                case 7:
+                    System.out.println("Saindo."); //tirei o cls pq nao tava dando erro
+                    saida = true;
+                    break;
+                default:
+                    System.out.println("Opcao invalida.");
+             }
+        }while(saida == false);
     }
 }
