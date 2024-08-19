@@ -117,7 +117,7 @@ public class Torneio{
     
                     for(int i = 0; i < qntDeJogadores; i++){
                         Jogador jogador = jogadores[i];
-                        boolean ganhou = jogador.jogoD.jogarJogoAzar(jogador);
+                        boolean ganhou = jogador.getJogoDados().jogarJogoAzar(jogador);
     
                         if(ganhou)
                             totalVencedores++;
@@ -138,7 +138,7 @@ public class Torneio{
                 }else if(jogoEscolhido == 2){
                     for(int i = 0; i < qntDeJogadores; i++){
                         Jogador jogador = jogadores[i];
-                        int pontuacao = jogador.jogoD.jogarJogoPorquinho();
+                        int pontuacao = jogador.getJogoDados().jogarJogoPorquinho();
                             
                         if(pontuacao >= 300){
                             ganhadorEncontrado = true;
