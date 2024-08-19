@@ -44,7 +44,7 @@ public class Jogador{
     }
     
     public int[] mostrarLancamentosJogo(){
-        return jogoD.getResultados();
+        return jogoD.getResultado();
     }
 
     public void ganhou(double valor){
