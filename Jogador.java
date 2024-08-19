@@ -74,6 +74,10 @@ public class Jogador{
     public boolean isHumano(){
         return this.tipo;
     }
+
+    public void setAposta(double aposta){
+        this.aposta = aposta;
+    }
     
     public String toString(){
         return "Jogador: \n" + "Id: " + this.id + "\n" + "Tipo: " + (this.tipo ? "humano" : "maquina") + "\n" +"Saldo: " + this.saldo + "\n" + "Aposta: " + this.aposta; 
