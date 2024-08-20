@@ -52,8 +52,10 @@ public class Torneio{
             System.out.println("Quantidade de jogadores excedida.");
     }
 
-    private void removerJogador(String id){
+    private void removerJogador(){
         if(qntDeJogadores > 0){
+            System.out.println("informe a indentificacao do jogador");
+            String id = scanner.nextLine();
             boolean jogadorRemovido = false;
     
             for(int i = 0; i < qntDeJogadores; i++){ 
@@ -243,9 +245,7 @@ public class Torneio{
                     incluirJogador();
                     break;
                 case 2:
-                    System.out.println("informe a indentificacao do jogador");
-                    String identificacao = scanner.nextLine();
-                    removerJogador(identificacao);
+                    removerJogador();
                     break;
                 case 3:
                     iniciarTorneio();
