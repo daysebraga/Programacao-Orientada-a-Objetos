@@ -62,6 +62,8 @@ public class JogoDados{    //classe para jogar os dados//
                     System.out.println(jogador.getId() + " perdeu.");
                     jogador.setGanhador(false);
                     return false;
+                }else{
+                    System.out.println("Lancamento " + i + ": \n" + resultado[0] + " e " + resultado[1] + " = " + novaSoma);
                 }
             }
         }
