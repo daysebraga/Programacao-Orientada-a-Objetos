@@ -1,8 +1,11 @@
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 
 
@@ -26,7 +29,7 @@ public class Torneio{
 
             for(int i = 0; i < qntDeJogadores; i++)
                 if(jogadores[i].getId().equals(id)){
-                    System.out.println("Jogador ja existe.");
+                    System.out.println("Jogador já existe.");
                     return;
                 }
 
@@ -108,7 +111,7 @@ public class Torneio{
                     System.out.println("Opcao invalida.");
             }while((jogoEscolhido != 1) && (jogoEscolhido != 2));
 
-            System.out.print("Informe o numero maximo de rodadas: ");
+            System.out.print("Informe o número máximo de rodadas: ");
             int rodada = scanner.nextInt();
             setQntDeRodadas(rodada);
             scanner.nextLine();
@@ -169,7 +172,7 @@ public class Torneio{
             }while((!ganhadorEncontrado) && (qntDeRodadas < rodada));
                 
             if(!ganhadorEncontrado)                    
-                System.out.println("Nenhum ganhador foi encontrado apos " + rodada + " rodadas.");
+                System.out.println("Nenhum ganhador foi encontrado após " + rodada + " rodadas.");
         }else
             System.out.println("Quantidade de jogadores inferior a 2.");
     }
@@ -186,33 +189,35 @@ public class Torneio{
                 }
             }
             
-            System.out.println("Classificacao dos Jogadores:");
+            System.out.println("Classificação dos Jogadores:");
             for(int i = 0; i < qntDeJogadores; i++)
                 System.out.println((i + 1) + " lugar: Jogador " + jogadores[i].getId() + " com saldo de " + jogadores[i].getSaldo());
         }
     }
 
+
     public void gravarTorneioArquivo(){
-        try(PrintWriter escrever = new PrintWriter(new FileWriter("torneio.txt"))){ //cria o objeto PrintWriter e escreve no arquivo
-            escrever.println(qntDeJogadores);
-            escrever.println(qntDeRodadas);
-            
+        System.out.println("");
+        File arquivo = new File("Torneio.dat");
+        try {
+            FileOutputStream fout = new FileOutputStream(arquivo);
+            ObjectOutputStream oos = new ObjectOutputStream(fout); // até aqui parte que foi comentada acima
             for(int i = 0; i < qntDeJogadores; i++){
                 Jogador jogador = jogadores[i];
-                escrever.println(jogador.getId());
-                escrever.println(jogador.isHumano());
-                escrever.println(jogador.getSaldo());
-                escrever.println(jogador.getAposta());
-                escrever.println(jogador.isGanhador());
+                oos.writeObject(jogador); //gravando o dado dos players
+                oos.flush();
+                oos.close();
+                fout.close();
+                System.out.println("Gravado com sucesso!");
             }
             
-        }catch(IOException e){ 
+        }catch(Exception e){ 
             System.out.println("Erro ao gravar os dados do torneio: " + e.getMessage()); //pra imprimir o nome do erro em caso de excecao
         }
     }
 
     public void lerTorneioArquivo(){
-        try(BufferedReader ler = new BufferedReader(new FileReader("torneio.txt"))){ //cria o objeto para ler o arquivo
+        try(BufferedReader ler = new BufferedReader(new FileReader("torneio.dat"))){ //cria o objeto para ler o arquivo
             qntDeJogadores = Integer.parseInt(ler.readLine());
             qntDeRodadas = Integer.parseInt(ler.readLine());
     
@@ -231,7 +236,7 @@ public class Torneio{
                 jogadores[i] = jogador;
             }
             
-        }catch (IOException e){ //trata a excecao igual o de cima
+        }catch (Exception e){ //trata a excecao igual o de cima
             System.out.println("Erro ao ler os dados do torneio: " + e.getMessage());
         }
     }
