@@ -67,21 +67,28 @@ public class JogoDados{    //classe para jogar os dados//
         }
     }
 
-    public int jogarJogoPorquinho(){
+    public int jogarJogoPorquinho(Jogador jogador){
         int pontuacao = 0;
         int lancamentos = 0;
-        
+
+        System.out.println("Jogador: " + jogador.getId());
         while(pontuacao < 300){
             int[] resultado = getResultado();
             int produto = resultado[0] * resultado[1];
+
+            System.out.println("O produto dos dados: " + resultado[0] + " * " + resultado[1] + " = " + produto);
             
             if(resultado[0] == resultado[1]){
-                if(resultado[0] == 1) //qnd os valores sao iguais a 1 o produto vale 30
+                if(resultado[0] == 1){ //qnd os valores sao iguais a 1 o produto vale 30
                     produto = 30;
-                else //dobrar o valor do produto para outros dobles
+                    System.out.println("Mas como deu doble 1 o valor é: " + produto);
+                }else{ //dobrar o valor do produto para outros dobles
+                    System.out.print("Como deu doble o novo valor é: " + produto + " * 2 = ");
                     produto *= 2; 
+                    System.out.println(produto);
+                }
             }
-            
+
             pontuacao += produto;
             lancamentos++;
         }
