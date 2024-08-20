@@ -94,7 +94,7 @@ public class JogoDados{    //classe para jogar os dados//
         }
 
         System.out.println("Pontuacao: " + pontuacao + "\nLancamentos: " + lancamentos);
-        return pontuacao;
+        return lancamentos;
     }
     
     public void aplicarRegradoJogo(int qualJogo, Jogador jogador){
