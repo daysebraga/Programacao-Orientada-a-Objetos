@@ -117,9 +117,10 @@ public class Torneio{
     
             do{
                 apostaDaRodada();
-                int totalVencedores = 0;
                 
                 if(jogoEscolhido == 1){
+                    int totalVencedores = 0;
+                    
                     for(int i = 0; i < qntDeJogadores; i++){
                         Jogador jogador = jogadores[i];
                         boolean ganhou = jogador.getJogoDados().jogarJogoAzar(jogador);
@@ -141,25 +142,24 @@ public class Torneio{
                     }else
                         System.out.println("Nenhum jogador venceu nesta rodada.");
                 }else if(jogoEscolhido == 2){
+                    int menorRodadas = Integer.MAX_VALUE;
+                    Jogador vencedor = null;
+                    Jogador jogador = null;
+                    
                     for(int i = 0; i < qntDeJogadores; i++){
-                        Jogador jogador = jogadores[i];
-                        int pontuacao = jogador.getJogoDados().jogarJogoPorquinho(jogador);
+                        jogador = jogadores[i];
+                        int rodadas = jogador.getJogoDados().jogarJogoPorquinho(jogador);
                             
-                        if(pontuacao >= 300){
-                            ganhadorEncontrado = true;
-                            jogador.setGanhador(true);
+                        if(rodadas < menorRodadas){
+                            menorRodadas = rodadas;
+                            vencedor = jogador;
                         }                        
                     }
 
-                    if(totalVencedores > 0){
-                        double valorPorGanhador = mesa / totalVencedores;
-                        for(int i = 0; i < qntDeJogadores; i++){
-                            Jogador jogador = jogadores[i];
-                            if(jogador.isGanhador()){
-                                jogador.ganhou(valorPorGanhador);
-                                System.out.println("Jogador " + jogador.getId() + " ganhou " + valorPorGanhador);
-                            }
-                        }
+                    if(vencedor != null){
+                        vencedor.setGanhador(true);
+                        vencedor.ganhou(mesa);
+                        System.out.println("Jogador " + jogador.getId() + " ganhou " + mesa);
                         ganhadorEncontrado = true;
                     }else
                         System.out.println("Nenhum jogador venceu nesta rodada.");
