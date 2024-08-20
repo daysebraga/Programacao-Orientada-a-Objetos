@@ -234,7 +234,7 @@ public class Torneio implements Serializable{
             for(Jogador p : jogadores){
                 if(p != null){
                     System.out.println("Id do jogador " + i + ": " + p.getId());
-                    System.out.println("Tipo do jogador " + i +": " + + (p.isHumano() ? "humano" : "maquina"));
+                    System.out.println("Tipo do jogador " + i +": " + (p.isHumano() ? "humano" : "maquina"));
                     System.out.println("O saldo do jogador " + i + ": " + p.getSaldo());
                     i++;
                 }
