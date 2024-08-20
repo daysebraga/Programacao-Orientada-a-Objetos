@@ -144,10 +144,9 @@ public class Torneio{
                 }else if(jogoEscolhido == 2){
                     int menorRodadas = Integer.MAX_VALUE;
                     Jogador vencedor = null;
-                    Jogador jogador = null;
                     
                     for(int i = 0; i < qntDeJogadores; i++){
-                        jogador = jogadores[i];
+                        Jogador jogador = jogadores[i];
                         int rodadas = jogador.getJogoDados().jogarJogoPorquinho(jogador);
                             
                         if(rodadas < menorRodadas){
@@ -159,7 +158,7 @@ public class Torneio{
                     if(vencedor != null){
                         vencedor.setGanhador(true);
                         vencedor.ganhou(mesa);
-                        System.out.println("Jogador " + jogador.getId() + " ganhou " + mesa);
+                        System.out.println("Jogador " + vencedor.getId() + " ganhou " + mesa);
                         ganhadorEncontrado = true;
                     }else
                         System.out.println("Nenhum jogador venceu nesta rodada.");
