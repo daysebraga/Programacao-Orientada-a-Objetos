@@ -285,6 +285,8 @@ public class Torneio implements Serializable{
                     lerTorneioArquivo();
                     break;
                 case 7:
+                    for(int i = 0; i < 50; i++)
+                        System.out.println();
                     System.out.println("Saindo..."); //tirei o cls pq tava dando erro
                     saida = true;
                     break;
