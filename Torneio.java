@@ -152,7 +152,8 @@ public class Torneio{
                             jogador.ganhou(mesa);
                             System.out.println("Jogador " + jogador.getId() + " ganhou " + mesa);
                             break;
-                        }                        }
+                        }                        
+                    }
                 }
                     
                 qntDeRodadas++;
