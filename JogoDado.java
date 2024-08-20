@@ -101,6 +101,6 @@ public class JogoDados{    //classe para jogar os dados//
         if(qualJogo == 1)
             jogarJogoAzar(jogador);
         else if(qualJogo == 2)
-            jogarJogoPorquinho();
+            jogarJogoPorquinho(jogador);
     }
 }
