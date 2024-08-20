@@ -144,7 +144,7 @@ public class Torneio{
                 }else if(jogoEscolhido == 2){
                     for(int i = 0; i < qntDeJogadores; i++){
                         Jogador jogador = jogadores[i];
-                        int pontuacao = jogador.getJogoDados().jogarJogoPorquinho();
+                        int pontuacao = jogador.getJogoDados().jogarJogoPorquinho(jogador);
                             
                         if(pontuacao >= 300){
                             ganhadorEncontrado = true;
@@ -271,7 +271,7 @@ public class Torneio{
                     saida = true;
                     break;
                 default:
-                    System.out.println("Opcao invalida.");
+                    System.out.println("Opcao invalida...");
              }
         }while(saida == false);
     }
