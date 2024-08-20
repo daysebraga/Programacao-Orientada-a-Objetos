@@ -157,6 +157,7 @@ public class Torneio{
             if(!ganhadorEncontrado)                    
                 System.out.println("Nenhum ganhador foi encontrado após " + rodada + " rodadas.");
         }
+        System.out.println("Quantidade de jogadores inferior a 2.");
     }
 
     public void placarDoTorneio(){
