@@ -77,8 +77,13 @@ public class Torneio{
         for(int i = 0; i < qntDeJogadores; i++){
             if(jogadores[i].getSaldo() > 1){
                 if(jogadores[i].isHumano()){
-                    System.out.print("Jogador " + jogadores[i].getId() + ", insira o valor da aposta: ");
-                    double aposta = scanner.nextInt();
+                    double aposta;
+                    do{
+                        System.out.print("Jogador " + jogadores[i].getId() + ", insira o valor da aposta: ");
+                        aposta = scanner.nextInt();
+                        if(aposta > jogadores[i].getSaldo())
+                            System.out.println("Aposta invalida. Seu saldo disponivel e de: " + jogadores[i].getSaldo());
+                    }while(aposta > jogadores[i].getSaldo());
                     mesa += jogadores[i].apostar(aposta);
                 }else
                     mesa += jogadores[i].apostar();
