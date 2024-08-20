@@ -111,14 +111,21 @@ public class Torneio{
                     System.out.println("Opcao invalida.");
             }while((jogoEscolhido != 1) && (jogoEscolhido != 2));
 
-            System.out.print("Informe o número máximo de rodadas: ");
-            int rodada = scanner.nextInt();
+            int rodada;
+            do{
+                System.out.print("Informe o número máximo de rodadas: ");
+                rodada = scanner.nextInt();
+                if(rodada > 10)
+                    System.out.println("Quantidade de rodada invalida. Insira um valor de ate 10 rodadas.");
+            }while(rodada > 10);
             setQntDeRodadas(rodada);
             scanner.nextLine();
     
             boolean ganhadorEncontrado = false;
+            rodada = 0;
     
             do{
+                System.out.println("Rodada " + (rodada + 1) + ": ");
                 apostaDaRodada();
                 
                 if(jogoEscolhido == 1){
@@ -167,9 +174,9 @@ public class Torneio{
                         System.out.println("Nenhum jogador venceu nesta rodada.");
                 }
                     
-                qntDeRodadas++;
+                rodada++;
                 mesa = 0;
-            }while((!ganhadorEncontrado) && (qntDeRodadas < rodada));
+            }while((qntDeRodadas > rodada)); //(!ganhadorEncontrado) && 
                 
             if(!ganhadorEncontrado)                    
                 System.out.println("Nenhum ganhador foi encontrado após " + rodada + " rodadas.");
