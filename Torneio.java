@@ -7,9 +7,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.Serializable;
 
 
-public class Torneio{
+public class Torneio implements Serializable{
     private Jogador[] jogadores;
     private int qntDeJogadores;
     private int qntDeRodadas;
@@ -224,26 +225,25 @@ public class Torneio{
     }
 
     public void lerTorneioArquivo(){
-        try(BufferedReader ler = new BufferedReader(new FileReader("torneio.dat"))){ //cria o objeto para ler o arquivo
-            qntDeJogadores = Integer.parseInt(ler.readLine());
-            qntDeRodadas = Integer.parseInt(ler.readLine());
-    
-            for (int i = 0; i < qntDeJogadores; i++){
-                String id = ler.readLine();
-                boolean tipo = Boolean.parseBoolean(ler.readLine());
-                double saldo = Double.parseDouble(ler.readLine());
-                double aposta = Double.parseDouble(ler.readLine());
-                boolean ganhador = Boolean.parseBoolean(ler.readLine());
-                
-                Jogador jogador = new Jogador(id, tipo);
-                jogador.ganhou(saldo);
-                jogador.setAposta(aposta);
-                jogador.setGanhador(ganhador);
-                
-                jogadores[i] = jogador;
+        File arquivo = new File("Torneio.dat");
+        int i = 1;
+        try{ 
+            FileInputStream fin = new FileInputStream(arquivo);
+            ObjectInputStream oin = new ObjectInputStream(fin);
+
+            Jogador[] jogadores = (Jogador[]) oin.readObject();
+            oin.close();
+            fin.close();
+
+            for(Jogador p : jogadores){
+                if(p != null){
+                    System.out.println("Id do jogador " + i + ": " + p.getId());
+                    System.out.println("Tipo do jogador " + i +": " + + (p.isHumano() ? "humano" : "maquina"));
+                    System.out.println("O saldo do jogador " + i + ": " + p.getSaldo());
+                    i++;
+                }
             }
-            
-        }catch (Exception e){ //trata a excecao igual o de cima
+        }catch(Exception e){ //trata a excecao igual o de cima
             System.out.println("Erro ao ler os dados do torneio: " + e.getMessage());
         }
     }
