@@ -149,11 +149,21 @@ public class Torneio{
                         if(pontuacao >= 300){
                             ganhadorEncontrado = true;
                             jogador.setGanhador(true);
-                            jogador.ganhou(mesa);
-                            System.out.println("Jogador " + jogador.getId() + " ganhou " + mesa);
-                            break;
                         }                        
                     }
+
+                    if(totalVencedores > 0){
+                        double valorPorGanhador = mesa / totalVencedores;
+                        for(int i = 0; i < qntDeJogadores; i++){
+                            Jogador jogador = jogadores[i];
+                            if(jogador.isGanhador()){
+                                jogador.ganhou(valorPorGanhador);
+                                System.out.println("Jogador " + jogador.getId() + " ganhou " + valorPorGanhador);
+                            }
+                        }
+                        ganhadorEncontrado = true;
+                    }else
+                        System.out.println("Nenhum jogador venceu nesta rodada.");
                 }
                     
                 qntDeRodadas++;
