@@ -275,11 +275,11 @@ public class Torneio{
                     lerTorneioArquivo();
                     break;
                 case 7:
-                    System.out.println("Saindo."); //tirei o cls pq nao tava dando erro
+                    System.out.println("Saindo..."); //tirei o cls pq nao tava dando erro
                     saida = true;
                     break;
                 default:
-                    System.out.println("Opcao invalida...");
+                    System.out.println("Opcao invalida.");
              }
         }while(saida == false);
     }
