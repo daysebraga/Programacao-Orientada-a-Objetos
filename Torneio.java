@@ -117,10 +117,9 @@ public class Torneio{
     
             do{
                 apostaDaRodada();
-    
+                int totalVencedores = 0;
+                
                 if(jogoEscolhido == 1){
-                    int totalVencedores = 0;
-    
                     for(int i = 0; i < qntDeJogadores; i++){
                         Jogador jogador = jogadores[i];
                         boolean ganhou = jogador.getJogoDados().jogarJogoAzar(jogador);
