@@ -85,8 +85,10 @@ public class Torneio implements Serializable{
                             System.out.println("Aposta invalida. Seu saldo disponivel e de: " + jogadores[i].getSaldo());
                     }while(aposta > jogadores[i].getSaldo());
                     mesa += jogadores[i].apostar(aposta);
-                }else
+                }else{
                     mesa += jogadores[i].apostar();
+                    System.out.println("O valor apostado do jogador " +  jogadores[i].getId() + " foi de " + jogadores[i].getAposta());
+                }
             }
         }
     }
@@ -283,7 +285,7 @@ public class Torneio implements Serializable{
                     lerTorneioArquivo();
                     break;
                 case 7:
-                    System.out.println("Saindo..."); //tirei o cls pq nao tava dando erro
+                    System.out.println("Saindo..."); //tirei o cls pq tava dando erro
                     saida = true;
                     break;
                 default:
