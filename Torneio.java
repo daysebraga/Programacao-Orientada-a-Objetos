@@ -1,11 +1,8 @@
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 
 
@@ -29,7 +26,7 @@ public class Torneio{
 
             for(int i = 0; i < qntDeJogadores; i++)
                 if(jogadores[i].getId().equals(id)){
-                    System.out.println("Jogador já existe.");
+                    System.out.println("Jogador ja existe.");
                     return;
                 }
 
@@ -111,7 +108,7 @@ public class Torneio{
                     System.out.println("Opcao invalida.");
             }while((jogoEscolhido != 1) && (jogoEscolhido != 2));
 
-            System.out.print("Informe o número máximo de rodadas: ");
+            System.out.print("Informe o numero maximo de rodadas: ");
             int rodada = scanner.nextInt();
             setQntDeRodadas(rodada);
             scanner.nextLine();
@@ -172,7 +169,7 @@ public class Torneio{
             }while((!ganhadorEncontrado) && (qntDeRodadas < rodada));
                 
             if(!ganhadorEncontrado)                    
-                System.out.println("Nenhum ganhador foi encontrado após " + rodada + " rodadas.");
+                System.out.println("Nenhum ganhador foi encontrado apos " + rodada + " rodadas.");
         }else
             System.out.println("Quantidade de jogadores inferior a 2.");
     }
@@ -189,39 +186,27 @@ public class Torneio{
                 }
             }
             
-            System.out.println("Classificação dos Jogadores:");
+            System.out.println("Classificacao dos Jogadores:");
             for(int i = 0; i < qntDeJogadores; i++)
                 System.out.println((i + 1) + " lugar: Jogador " + jogadores[i].getId() + " com saldo de " + jogadores[i].getSaldo());
         }
     }
 
-
     public void gravarTorneioArquivo(){
-        // try(PrintWriter escrever = new PrintWriter(new FileWriter("torneio.txt"))){ //cria o objeto PrintWriter e escreve no arquivo
-        //     escrever.println(qntDeJogadores);
-        //     escrever.println(qntDeRodadas);
-        //ESSSA PARTE ACIMA SOME E VIRA A DE BAIXO:
-         System.out.println("");
-        File arquivo = new File("Torneio.dat");
-        try {
-            FileOutputStream fout = new FileOutputStream(arquivo);
-            ObjectOutputStream oos = new ObjectOutputStream(fout); // até aqui parte que foi comentada acima
+        try(PrintWriter escrever = new PrintWriter(new FileWriter("torneio.txt"))){ //cria o objeto PrintWriter e escreve no arquivo
+            escrever.println(qntDeJogadores);
+            escrever.println(qntDeRodadas);
+            
             for(int i = 0; i < qntDeJogadores; i++){
                 Jogador jogador = jogadores[i];
-                // escrever.println(jogador.getId());
-                // escrever.println(jogador.isHumano());
-                // escrever.println(jogador.getSaldo());
-                // escrever.println(jogador.getAposta());
-                // escrever.println(jogador.isGanhador());
-                //isso acima vira, possivelmente:
-                oos.writeObject(jogador); //gravando o dado dos players
-                oos.flush();
-                oos.close();
-                fout.close();
-                System.out.println("Gravado com sucesso!");
+                escrever.println(jogador.getId());
+                escrever.println(jogador.isHumano());
+                escrever.println(jogador.getSaldo());
+                escrever.println(jogador.getAposta());
+                escrever.println(jogador.isGanhador());
             }
             
-        }catch(Exception e){ 
+        }catch(IOException e){ 
             System.out.println("Erro ao gravar os dados do torneio: " + e.getMessage()); //pra imprimir o nome do erro em caso de excecao
         }
     }
