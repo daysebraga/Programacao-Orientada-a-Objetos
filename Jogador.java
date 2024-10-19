@@ -1,4 +1,4 @@
-public class Jogador{
+public class Jogador implements Serializable{
     private String id;
     private boolean tipo; //true (1) para humano, false (0) para máquina
     private double aposta;
