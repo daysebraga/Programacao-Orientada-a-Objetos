@@ -233,14 +233,7 @@ public class Torneio implements Serializable{
             
             oin.close();
             fin.close();
-    
-            for(int i = 0; i < jogadores.length; i++){
-                if(jogadores[i] != null){
-                    System.out.println("Id do jogador " + (i + 1) + ": " + jogadores[i].getId());
-                    System.out.println("Tipo do jogador " + (i + 1) + ": " + (jogadores[i].isHumano() ? "humano" : "maquina"));
-                    System.out.println("O saldo do jogador " + (i + 1) + ": " + jogadores[i].getSaldo());
-                }
-            }
+            
         }catch(Exception e){ 
             System.out.println("Erro ao ler os dados do torneio: " + e.getMessage());
         }
