@@ -201,8 +201,52 @@ public class Torneio implements Serializable{
         }
     }
 
-
     public void gravarTorneioArquivo(){
+        System.out.println("");
+        File arquivo = new File("Torneio.dat");
+        
+        try{
+            FileOutputStream fout = new FileOutputStream(arquivo);
+            ObjectOutputStream oos = new ObjectOutputStream(fout);
+            
+            // Gravando o array de jogadores completo de uma vez
+            oos.writeObject(jogadores);
+            oos.flush();
+            oos.close();
+            fout.close();
+            
+            System.out.println("Gravado com sucesso!");
+        }catch(Exception e){ 
+            System.out.println("Erro ao gravar os dados do torneio: " + e.getMessage());
+        }    
+    }
+
+    public void lerTorneioArquivo(){
+        File arquivo = new File("Torneio.dat");
+        
+        try{ 
+            FileInputStream fin = new FileInputStream(arquivo);
+            ObjectInputStream oin = new ObjectInputStream(fin);
+    
+            // Lendo o array de jogadores completo de uma vez
+            jogadores = (Jogador[]) oin.readObject();
+            
+            oin.close();
+            fin.close();
+    
+            for(int i = 0; i < jogadores.length; i++){
+                if(jogadores[i] != null){
+                    System.out.println("Id do jogador " + (i + 1) + ": " + jogadores[i].getId());
+                    System.out.println("Tipo do jogador " + (i + 1) + ": " + (jogadores[i].isHumano() ? "humano" : "maquina"));
+                    System.out.println("O saldo do jogador " + (i + 1) + ": " + jogadores[i].getSaldo());
+                }
+            }
+        }catch(Exception e){ 
+            System.out.println("Erro ao ler os dados do torneio: " + e.getMessage());
+        }
+    }
+
+    /*public void gravarTorneioArquivo(){
         System.out.println("");
         File arquivo = new File("Torneio.dat");
         try {
@@ -244,7 +288,7 @@ public class Torneio implements Serializable{
         }catch(Exception e){ //trata a excecao igual o de cima
             System.out.println("Erro ao ler os dados do torneio: " + e.getMessage());
         }
-    }
+    }*/
 
     public void menuInterface(){
         boolean saida = false;
