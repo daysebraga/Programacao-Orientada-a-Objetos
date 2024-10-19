@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Dado{
+public class Dado implements Serializable{
     private int sideUp;
 
     public Dado(){ //construtor padrão, sempre que o objeto dado for criado o lado de cima do dado vai ser aleatorio 
