@@ -238,51 +238,7 @@ public class Torneio implements Serializable{
             System.out.println("Erro ao ler os dados do torneio: " + e.getMessage());
         }
     }
-
-    /*public void gravarTorneioArquivo(){
-        System.out.println("");
-        File arquivo = new File("Torneio.dat");
-        try {
-            FileOutputStream fout = new FileOutputStream(arquivo);
-            ObjectOutputStream oos = new ObjectOutputStream(fout); // até aqui parte que foi comentada acima
-            for(int i = 0; i < qntDeJogadores; i++){
-                Jogador jogador = jogadores[i];
-                oos.writeObject(jogador); //gravando o dado dos players
-                oos.flush();
-                oos.close();
-                fout.close();
-                System.out.println("Gravado com sucesso!");
-            }
-            
-        }catch(Exception e){ 
-            System.out.println("Erro ao gravar os dados do torneio: " + e.getMessage()); //pra imprimir o nome do erro em caso de excecao
-        }
-    }
-
-    public void lerTorneioArquivo(){
-        File arquivo = new File("Torneio.dat");
-        int i = 1;
-        try{ 
-            FileInputStream fin = new FileInputStream(arquivo);
-            ObjectInputStream oin = new ObjectInputStream(fin);
-
-            Jogador[] jogadores = (Jogador[]) oin.readObject();
-            oin.close();
-            fin.close();
-
-            for(Jogador p : jogadores){
-                if(p != null){
-                    System.out.println("Id do jogador " + i + ": " + p.getId());
-                    System.out.println("Tipo do jogador " + i +": " + (p.isHumano() ? "humano" : "maquina"));
-                    System.out.println("O saldo do jogador " + i + ": " + p.getSaldo());
-                    i++;
-                }
-            }
-        }catch(Exception e){ //trata a excecao igual o de cima
-            System.out.println("Erro ao ler os dados do torneio: " + e.getMessage());
-        }
-    }*/
-
+    
     public void menuInterface(){
         boolean saida = false;
         do{
