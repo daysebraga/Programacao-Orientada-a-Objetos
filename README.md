@@ -2,7 +2,7 @@
 _Esse é um projeto avaliativo da parte introdutoria da disciplina de P.O.O. que utiliza a linguagem de programação Java,
 o projeto visa, criar um Sistema simulador de torneios de apostas em jogos de dados._
 
- ## _O aplicativo está seguindo os principios da Programação Orientada a Objetos:_
+ ## _A aplicação está seguindo os principios da Programação Orientada a Objetos:_
  - _Encapsulamento_
  - _Associação de classes (composição ou agregação)_
  - _Cada classe executando suas operações específicas_
